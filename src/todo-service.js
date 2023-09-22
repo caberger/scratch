@@ -11,4 +11,4 @@ class ToDoService {
     }
 }
 const todoService = new ToDoService()
-export default todoService
+export { todoService }
