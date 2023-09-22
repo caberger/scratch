@@ -1,8 +1,12 @@
 import { render, html } from "../node_modules/lit-html/lit-html.js"
 import { todoService } from "./todo-service.js"
 
+function toDoClicked(todo) {
+    alert(`todo ${todo.title} clicked`)
+}
+
 const rowTemplate = todo  => html`
-    <tr><td>${todo.id}</td><td>${todo.title}</td></tr>
+    <tr id=${`tr-${todo.id}`} @click=${e => toDoClicked(todo)}><td>${todo.id}</td><td>${todo.title}</td></tr>
 `
 const tableTemplate = todos => {
     const rows = todos.map(todo => rowTemplate(todo))
@@ -30,3 +34,4 @@ class TodoTableComponent extends HTMLElement {
     }
 }
 customElements.define("todo-table", TodoTableComponent)
+
